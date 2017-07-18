@@ -17,13 +17,15 @@ class Filters extends React.Component{
 
   render(){
     return (
-      <form ref={(form) => this.filterForm = form} onSubmit={(e) => this.runFilters(e)}>
-        <h2>Filters</h2>
-        <p>
-          Search: <input type="text" ref={(input) => this.word = input} />
-        </p>
-        <button type="submit">Search</button>
-      </form>
+      <div>
+        <form ref={(form) => this.filterForm = form} onSubmit={(e) => this.runFilters(e)}>
+          <h2>Filters</h2>
+          <p>
+            Search: <input type="text" ref={(input) => this.word = input} />
+          </p>
+          <button type="submit">Search</button>
+        </form>
+      </div>
     )
   }
 }
