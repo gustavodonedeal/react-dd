@@ -1,5 +1,4 @@
 import React from 'react';
-import history from '../history';
 import { Link } from 'react-router-dom';
 
 class Card extends React.Component{
@@ -34,7 +33,7 @@ class Card extends React.Component{
             <div className="card">
               <div className="card__media">
                 <div className="card__photo">
-                  <img src={adPhoto}/>
+                  <img src={adPhoto} alt={ad.header} />
                 </div>
                 <div className="card__media-count">
                   <i className="icon-camera"></i>
