@@ -13,8 +13,8 @@ class App extends Component  {
         <div>
           <Header />
           <Route exact path='/' component={Search}/>
-          <Route path='/ad/:adId' component={View}/>
-          <Route path='/:section' component={Search}/>
+          <Route exatc path='/ad/:adId' component={View}/>
+          <Route exact path='/:section' component={Search}/>
         </div>
       </Router>
     )
