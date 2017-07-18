@@ -1,30 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PriceTag from './PriceTag';
 
 class Card extends React.Component{
 
   render(){
-
-    const injectHTML = (markup) =>{
-      return {__html: markup};
-    };
-
     const ad = this.props.ad;
-    let cardPrice;
-    let price;
-    let currencySymbolMarkup;
+
     let adPhoto = (ad.photos && ad.photos.length > 0 ? ad.photos[0].small2 : undefined);
-    if(typeof ad.nativeAdParameters === 'undefined'){
-      currencySymbolMarkup = (typeof ad.price !== 'undefined' && ad.price !== '') ? (ad.currency === 'GBP' ? '&#163;' : '&#128;') : 'No Price';
-      if(ad.wanted === true){
-        price = <span>WANTED</span>
-      } else{
-        price = <span>
-          <span dangerouslySetInnerHTML={injectHTML(currencySymbolMarkup)}></span>
-          {(typeof ad.price !== 'undefined' && ad.price !== '') ? ad.price : ''}</span>;
-      }
-      cardPrice = <p className={'card__price' + (ad.wanted === true ? ' card__price--wanted' : '')}>{price}</p>
-    }
 
     return (
 
@@ -37,7 +20,7 @@ class Card extends React.Component{
                 </div>
                 <div className="card__media-count">
                   <i className="icon-camera"></i>
-                  1/8
+                  1/{ad.mediaCount}
                 </div>
               </div>
               <div className="card__body">
@@ -49,7 +32,7 @@ class Card extends React.Component{
                   </ul>
                 </div>
                 <div className="card__body-lower">
-                  {cardPrice}
+                  <PriceTag ad={ad}/>
 
                   <div className="card__actions">
                     <i className="manual-false-page card-actions__save icon icon-save-heart"></i>
