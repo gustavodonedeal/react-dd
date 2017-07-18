@@ -8,8 +8,6 @@ class Card extends React.Component{
   render(){
     const ad = this.props.ad;
 
-    let adPhoto = (ad.photos && ad.photos.length > 0 ? ad.photos[0].small2 : undefined);
-
     return (
 
         <li className="card-item">
