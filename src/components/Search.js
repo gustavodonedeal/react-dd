@@ -6,37 +6,36 @@ import Filters from './Filters';
 
 class Search extends Component {
 
-  constructor(){
-      super();
-      this.loadAds = this.loadAds.bind(this);
-      this.updateAds = this.updateAds.bind(this);
+  constructor() {
+    super();
+    this.loadAds = this.loadAds.bind(this);
+    this.updateAds = this.updateAds.bind(this);
 
-      // start the state
-      this.error = null;
-      this.section = 'cars';
+    // start the state
+    this.error = null;
+    this.section = 'cars';
 
-      axios.defaults.headers.post['Content-Type'] = 'application/json';
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.section = 'cars';
       //this.section = this.props.match.params.section || 'cars';
-      if(this.props.loading && !this.props.ads.length) {
+      if (this.props.loading && !this.props.ads.length) {
         this.loadAds();
       }
-    },0);
+    }, 0);
   }
-
 
   loadAds() {
     const cors = 'https://cors-anywhere.herokuapp.com/';
-    const params = Object.assign({},{
+    const params = Object.assign({}, {
       adType: 'forsale',
       max: 30,
       section: this.section,
       sort: 'relevance desc',
-    },this.props.filter) ;
+    }, this.props.filter) ;
 
     this.serverRequest = axios.post(`${cors}https://www.donedeal.ie/search/api/v4/find/`, params)
       .then((response) => {

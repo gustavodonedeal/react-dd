@@ -16,10 +16,6 @@ class SellerDetails extends Component {
                 <div className="contact-seller-title">
                   <span className="contact-seller-name">{ad.seller && ad.seller.name || ''}</span>
                 </div>
-                <div className="seller-type-tag trader">Trader
-                </div>
-                  <a rel="nofollow" className="see-all-ads-link trackable"
-                     target="_self" title="See all of this advertiser's ads" href={'/all?userId=' + (ad.seller && ad.seller.id)}>View all ads</a>
               </div>
 
               <div className="contact-seller-method contact-seller-by-message disabled">

@@ -33,7 +33,7 @@ class App extends Component  {
         <div>
           <Header />
           <Route exact path='/' component={(props) => this.searchComponent(props)}/>
-          <Route exatc path='/ad/:adId' component={View}/>
+          <Route exact path='/ad/:adId' component={View}/>
           <Route exact path='/:section' component={(props) => this.searchComponent(props)}/>
         </div>
       </Router>
