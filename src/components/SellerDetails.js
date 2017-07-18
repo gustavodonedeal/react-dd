@@ -5,7 +5,7 @@ class SellerDetails extends Component {
   render(){
 
     const ad = this.props.ad;
-console.log('sdd',ad)
+
     const sellerDetailsHTML =
           <div className="seller-interaction-container">
             <div className="contact-seller-container">
