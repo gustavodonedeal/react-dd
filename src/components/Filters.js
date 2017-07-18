@@ -7,8 +7,8 @@ class Filters extends React.Component{
     this.runFilters = this.runFilters.bind(this);
   }
 
-  runFilters(e) {
-    e.preventDefault();
+  runFilters(event) {
+    event.preventDefault();
     const filter = {
       word: this.word.value
     }
@@ -21,9 +21,9 @@ class Filters extends React.Component{
         <form ref={(form) => this.filterForm = form} onSubmit={(e) => this.runFilters(e)}>
           <h2>Filters</h2>
           <p>
-            Search: <input type="text" ref={(input) => this.word = input} />
+            Search: <input type="text" ref={(input) => this.word = input} /> <button type="submit">Search</button>
           </p>
-          <button type="submit">Search</button>
+
         </form>
       </div>
     )

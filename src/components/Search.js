@@ -18,6 +18,8 @@ class Search extends Component {
         error: null
       };
       this.error = null;
+
+      axios.defaults.headers.post['Content-Type'] = 'application/json';
   }
 
   componentDidMount() {
@@ -44,9 +46,7 @@ class Search extends Component {
           loading: false
         });
       }).catch((error) => {
-        this.setState({
-          error: error
-        });
+        console.error(error);
       });
   }
 
@@ -58,23 +58,29 @@ class Search extends Component {
   }
 
   render() {
-    const { loading, error } = this.state;
+    const { loading, ads } = this.state;
+    let cards;
 
-    if(loading && !error) {
+    if(loading) {
       return (<p>Loading...</p>)
-    } else if(error){
-      return (<p><b>Error:</b> <i>{error}</i></p>)
+    } else if (!ads) {
+      cards = (
+        <p>{`No results for your search 😞`}</p>)
+    } else {
+      cards = (
+        <ul>
+          {ads.map((ad) =>
+            <Card ad={ad} key={ad.id} />
+          )}
+        </ul>
+      )
     }
 
     return (
       <div className="App">
         <Filters updateAds={this.updateAds} />
         <h1>{this.section.toUpperCase()}</h1>
-        <ul>
-          {this.state.ads.map((ad) =>
-            <Card ad={ad} key={ad.id} />
-          )}
-        </ul>
+        {cards}
       </div>
     );
   }
