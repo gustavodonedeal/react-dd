@@ -36,7 +36,7 @@ class View extends React.Component {
         <h1>Ad Details</h1>
 
         <h2>{ad.header}</h2>
-        <description>
+        <description className="desc">
           {ad.description}
         </description>
         <div>
