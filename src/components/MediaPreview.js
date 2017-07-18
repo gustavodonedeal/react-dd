@@ -10,7 +10,7 @@ class MediaPreview extends Component {
     return (
       <div className="card__media">
         <div className="card__photo">
-          <img src={adPhoto}/>
+          <img alt={ad.header} src={adPhoto}/>
         </div>
         <div className="card__media-count">
           <i className="icon-camera"></i>

@@ -12,36 +12,35 @@ class Search extends Component {
       this.updateAds = this.updateAds.bind(this);
 
       // start the state
-      this.state = {
-        ads: [],
-        loading: true,
-        error: null
-      };
       this.error = null;
+      this.section = 'cars';
 
       axios.defaults.headers.post['Content-Type'] = 'application/json';
   }
 
   componentDidMount() {
     setTimeout(() => {
-      this.section = this.props.match.params.section || 'cars';
-      this.loadAds();
+      this.section = 'cars';
+      //this.section = this.props.match.params.section || 'cars';
+      if(this.props.loading && !this.props.ads.length) {
+        this.loadAds();
+      }
     },0);
   }
 
 
-  loadAds(filters = null) {
+  loadAds() {
     const cors = 'https://cors-anywhere.herokuapp.com/';
     const params = Object.assign({},{
       adType: 'forsale',
       max: 30,
       section: this.section,
       sort: 'relevance desc',
-    },filters) ;
+    },this.props.filter) ;
 
     this.serverRequest = axios.post(`${cors}https://www.donedeal.ie/search/api/v4/find/`, params)
       .then((response) => {
-        this.setState({
+        this.props.updateState({
           ads: response.data.ads,
           loading: false
         });
@@ -51,14 +50,15 @@ class Search extends Component {
   }
 
   updateAds(filter) {
-    this.setState({
-      ads: []
+    this.props.updateState({
+      ads: [],
+      loading: true,
+      filter: filter
     });
-    this.loadAds(filter);
   }
 
   render() {
-    const { loading, ads } = this.state;
+    const { ads, loading } = this.props;
     let cards;
 
     if(loading) {
