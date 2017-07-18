@@ -10,7 +10,7 @@ class Filters extends React.Component{
   runFilters(event) {
     event.preventDefault();
     const filter = {
-      word: this.word.value
+      words: this.word.value
     }
     this.props.updateAds(filter);
   }

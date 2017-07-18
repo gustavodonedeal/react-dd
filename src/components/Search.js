@@ -29,14 +29,14 @@ class Search extends Component {
   }
 
 
-  loadAds(filters = null) {
+  loadAds() {
     const cors = 'https://cors-anywhere.herokuapp.com/';
     const params = Object.assign({},{
       adType: 'forsale',
       max: 30,
       section: this.section,
       sort: 'relevance desc',
-    },filters) ;
+    },this.props.filter) ;
 
     this.serverRequest = axios.post(`${cors}https://www.donedeal.ie/search/api/v4/find/`, params)
       .then((response) => {
@@ -50,10 +50,11 @@ class Search extends Component {
   }
 
   updateAds(filter) {
-    this.setState({
-      ads: []
+    this.props.updateState({
+      ads: [],
+      loading: true,
+      filter: filter
     });
-    this.loadAds(filter);
   }
 
   render() {
