@@ -7,12 +7,27 @@ import Header from './components/Header';
 
 class App extends Component  {
 
+  constructor() {
+    super();
+
+    this.updateState = this.updateState.bind(this);
+
+    this.state = {
+      ads: [],
+      loading: true
+    }
+  }
+
+  updateState(newState){
+    this.setState(newState);
+  }
+
   render(){
     return(
       <Router history={history}>
         <div>
           <Header />
-          <Route exact path='/' component={Search}/>
+          <Route exact path='/' component={(props) => <Search {...props} {...this.state} updateState={this.updateState} />}/>
           <Route exatc path='/ad/:adId' component={View}/>
           <Route exact path='/:section' component={Search}/>
         </div>
