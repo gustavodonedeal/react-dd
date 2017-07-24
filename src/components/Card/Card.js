@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MediaPreview from './MediaPreview';
-import PriceTag from './PriceTag';
+import MediaPreview from '../MediaPreview';
+import PriceTag from '../PriceTag';
 
 class Card extends React.Component{
 
