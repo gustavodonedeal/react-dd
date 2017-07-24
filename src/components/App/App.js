@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import history from './history';
-import Search from './components/Search';
-import View from './components/View';
-import Header from './components/Header';
+import { createBrowserHistory } from 'history'
+import Search from '../Search';
+import View from '../View';
+import Header from '../Header';
+import './App.css';
 
 class App extends Component  {
 
@@ -29,7 +30,7 @@ class App extends Component  {
 
   render(){
     return(
-      <Router history={history}>
+      <Router history={createBrowserHistory()}>
         <div>
           <Header />
           <Route exact path='/' component={(props) => this.searchComponent(props)}/>
