@@ -24,7 +24,7 @@ class Card extends React.Component{
                 <div className="card__body-lower">
                   <PriceTag ad={ad} />
                   <div className="card__actions">
-                    <i className="manual-false-page card-actions__save icon icon-save-heart"></i>
+                    <i className="manual-false-page card-actions__save icon icon-save-heart" />
                   </div>
                 </div>
               </div>
