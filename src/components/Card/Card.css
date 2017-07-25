@@ -90,3 +90,32 @@
   color: rgba(0, 0, 0, .75);
   margin-bottom: 0;
 }
+
+.card__body-keyinfo{
+  margin: .3em 0 .2em;
+  text-align: left;
+}
+
+.card__body-keyinfo li:first-of-type{
+  margin-left: 0;
+}
+
+.card__body-keyinfo li{
+  color: #999;
+  color: rgba(0, 0, 0, .4);
+  font-size: 13px;
+  display: inline-block;
+}
+
+.card__body-keyinfo li:first-of-type{
+  margin-left: 0;
+}
+
+.card__body-keyinfo li:first-of-type::before{
+  content: '';
+}
+
+.card__body-keyinfo li::before{
+  content: "\000B7";
+  margin: 0 4px;
+}

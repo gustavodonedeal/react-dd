@@ -3,45 +3,13 @@ p{
   margin: .4em 0;
   line-height: 1.2;
 }
-.card__adinfo{
-  display: none;
-}
+
 ol, ul, li{
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.card__adinfo li{
-  display: inline-block;
-  color: #999;
-  color: rgba(0, 0, 0, .4);
-  font-weight: 400;
-  font-size: 11px;
-  text-transform: uppercase;
-}
-.card__body-keyinfo{
-  margin: .3em 0 .2em;
-  text-align: left;
-}
-.card__body-keyinfo li:first-of-type{
-  margin-left: 0;
-}
-.card__body-keyinfo li{
-  color: #999;
-  color: rgba(0, 0, 0, .4);
-  font-size: 13px;
-  display: inline-block;
-}
-.card__body-keyinfo li:first-of-type{
-  margin-left: 0;
-}
-.card__body-keyinfo li:first-of-type::before{
-  content: '';
-}
-.card__body-keyinfo li::before{
-  content: "\000B7";
-  margin: 0 4px;
-}
+
 .card__price{
   display: inline-block;
   margin: 10px 0 0;
