@@ -11,30 +11,35 @@ const CardList = ({ ads }) => (
 
 class Search extends Component {
 
-  constructor() {
-    super();
-    this.state = { section: 'cars' };
+  constructor(props) {
+    super(props);
+    this.state = {
+      section: 'cars',
+      ads: [],
+      loading: true,
+      filter: {}
+    };
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      if (this.props.loading && !this.props.ads.length) {
-        getAds().then(ads => this.props.updateState({ ads, loading: false }));
-      }
-    }, 0);
+    const { loading, ads, section, filter } = this.state;
+    if (loading && !ads.length) {
+      getAds(section, filter).then(
+        ads => this.setState(prevState => ({ ads, loading: false }))
+      );
+    }
   }
 
   updateAds = filter => {
-    this.props.updateState({
+    this.setState({
       ads: [],
       loading: true,
-      filter: filter
+      filter
     });
   }
 
   render() {
-    const { ads, loading } = this.props;
-    const { section } = this.state;
+    const { section, ads, loading } = this.state;
 
     if (loading) {
       return (<p>Loading...</p>)

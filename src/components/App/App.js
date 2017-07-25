@@ -7,31 +7,14 @@ import Header from '../Header';
 import './App.css';
 
 class App extends Component  {
-
-  constructor() {
-    super();
-
-    this.state = {
-      ads: [],
-      loading: true,
-      filter: {}
-    }
-  }
-
-  updateState = newState => this.setState(newState);
-
-  searchComponent(props){
-    return (<Search {...props} {...this.state} updateState={this.updateState} />)
-  }
-
   render(){
     return(
       <Router history={createBrowserHistory()}>
         <div>
           <Header />
-          <Route exact path='/' component={(props) => this.searchComponent(props)} />
+          <Route exact path='/' component={Search} />
           <Route exact path='/ad/:adId' component={View} />
-          <Route exact path='/:section' component={(props) => this.searchComponent(props)}/>
+          <Route exact path='/:section' component={Search}/>
         </div>
       </Router>
     )
