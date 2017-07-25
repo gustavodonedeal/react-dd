@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Card from './Card';
-import Filters from './Filters';
+import Card from '../Card';
+import Filters from '../Filters';
 
 class Search extends Component {
 
