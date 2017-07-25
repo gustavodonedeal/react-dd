@@ -41,17 +41,13 @@ class Search extends Component {
   render() {
     const { section, ads, loading } = this.state;
 
-    if (loading) {
-      return (<p>Loading...</p>)
-    }
-
-    return (
+    return !loading ? (
       <div className="App">
         <Filters updateAds={this.updateAds} />
         <h1>{section.toUpperCase()}</h1>
         { ads ? <CardList ads={ads} /> : <p>{`No results for your search 😞`}</p> }
       </div>
-    );
+    ) : (<p>Loading...</p>);
   }
 }
 
