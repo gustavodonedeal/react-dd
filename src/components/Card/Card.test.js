@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router';
 import Card from './Card';
 
 it('renders inital loading state correctly', async () => {
-  const json = await import('../../__tests__/sampleAdvert.json');
+  const json = await import('../../../__tests__/sampleAdvert.json');
   const immutableAdvert = Object.freeze(json);
   const tree = renderer.create(
     <MemoryRouter>

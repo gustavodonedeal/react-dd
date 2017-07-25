@@ -11,8 +11,6 @@ class App extends Component  {
   constructor() {
     super();
 
-    this.updateState = this.updateState.bind(this);
-
     this.state = {
       ads: [],
       loading: true,
@@ -20,9 +18,7 @@ class App extends Component  {
     }
   }
 
-  updateState(newState){
-    this.setState(newState);
-  }
+  updateState = newState => this.setState(newState);
 
   searchComponent(props){
     return (<Search {...props} {...this.state} updateState={this.updateState} />)
@@ -33,8 +29,8 @@ class App extends Component  {
       <Router history={createBrowserHistory()}>
         <div>
           <Header />
-          <Route exact path='/' component={(props) => this.searchComponent(props)}/>
-          <Route exact path='/ad/:adId' component={View}/>
+          <Route exact path='/' component={(props) => this.searchComponent(props)} />
+          <Route exact path='/ad/:adId' component={View} />
           <Route exact path='/:section' component={(props) => this.searchComponent(props)}/>
         </div>
       </Router>

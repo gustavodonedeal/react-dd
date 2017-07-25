@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../donedeal-logo.svg';
+import logo from '../assets/donedeal-logo.svg';
 
 class Header extends React.Component {
   render() {

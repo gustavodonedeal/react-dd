@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import PriceTag from './PriceTag';
-import MediaPreview from './MediaPreview';
-import SellerDetails from './SellerDetails';
+import PriceTag from '../PriceTag';
+import MediaPreview from '../MediaPreview';
+import SellerDetails from '../SellerDetails';
 
 const corsUrlPrefix = 'https://cors-anywhere.herokuapp.com/';
 const viewApiUrl = `${corsUrlPrefix}https://www.donedeal.ie/cadview/api/v3/view/ad/`;
