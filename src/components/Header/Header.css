@@ -1,0 +1,40 @@
+.header-content {
+  color: rgba(0, 0, 0, .75);
+}
+.header-content a {
+  color: inherit;
+}
+
+.menu-bar-container {
+  margin: 0 auto;
+  background-color: #fff;
+  border-bottom: 5px solid #f0292a;
+}
+
+.menu-bar-content {
+  height: 70px;
+}
+
+.page-row {
+  max-width: 1234px;
+  width: 100%;
+}
+
+.header-logo{
+  float: left;
+  margin-right: 10px;
+  display: block;
+  margin-right: 12px;
+  height: 32px;
+  min-width: 156px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.header-logo-image{
+  display: inline-block;
+  height: 100%;
+  width: 156px;
+  max-width: 156px;
+}

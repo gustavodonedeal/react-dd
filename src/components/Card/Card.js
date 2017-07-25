@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MediaPreview from '../MediaPreview';
 import PriceTag from '../PriceTag';
+import './Card.css';
 
 class Card extends React.Component{
 
