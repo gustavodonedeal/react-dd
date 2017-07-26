@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
-import { MemoryRouter } from 'react-router';
 import fetchMock from 'fetch-mock';
-import Search from './Search';
+import View from './View';
 
-it('renders "No Results found" correctly', async () => {
+it('renders "empty ad" correctly', async () => {
   const json = await import('../../../__tests__/sampleAdvert.json');
   fetchMock.mock('*', [json]);
+  const context = {};
   const tree = renderer.create(
-    <MemoryRouter>
-      <Search />
-    </MemoryRouter>
+    <View match={{ params: { adId: 16140864 }}} />
   ).toJSON();
   expect(tree).toMatchSnapshot();
   fetchMock.restore();

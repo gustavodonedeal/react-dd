@@ -1,40 +1,30 @@
 import React from 'react';
-import axios from 'axios';
 import PriceTag from '../PriceTag';
 import MediaPreview from '../MediaPreview';
 import SellerDetails from '../SellerDetails';
-
-const corsUrlPrefix = 'https://cors-anywhere.herokuapp.com/';
-const viewApiUrl = `${corsUrlPrefix}https://www.donedeal.ie/cadview/api/v3/view/ad/`;
+import { getAd } from '../../api/ads';
 
 class View extends React.Component {
 
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       ad: {}
     }
   };
 
   componentDidMount() {
-    this.serverRequest = axios.get(viewApiUrl + this.props.match.params.adId)
-      .then((response) => {
-        this.setState({
-          ad: response.data,
-        });
-      }).catch((error) => {
-        console.error(error);
-      });
+    const { adId } = this.props.match.params;
+    getAd(adId).then(ad => 
+      this.setState(prevState => ({ ad }))
+    );
   };
 
   render() {
-    const ad = this.state.ad;
-
+    const { ad } = this.state;
     return (
       <div className="App">
         <h1>Ad Details</h1>
-
         <h2>{ad.header}</h2>
         <description className="desc">
           {ad.description}
@@ -43,11 +33,8 @@ class View extends React.Component {
           <PriceTag ad={ad} />
           {ad.county}
         </div>
-
         <MediaPreview ad={ad} />
-
         <SellerDetails ad={ad} />
-
       </div>
     )
   }
