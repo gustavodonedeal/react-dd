@@ -96,10 +96,56 @@ exports[`renders "empty ad" correctly 1`] = `
             onClick={[Function]}
             title="Click to show phone number"
           >
-            Seller can't be phoned
+            Show phone number
           </button>
         </div>
       </div>
+    </div>
+    <div>
+      <dl
+        className="seller-detail"
+      >
+        <dt
+          className="seller-detail-label"
+        >
+          Location
+        </dt>
+        <dd
+          className="seller-detail-value"
+        >
+          <address>
+            ---
+          </address>
+        </dd>
+      </dl>
+      <dl
+        className="seller-detail"
+      >
+        <dt
+          className="seller-detail-label"
+        >
+          DoneDealing since
+        </dt>
+        <dd
+          className="seller-detail-value"
+        >
+          2018
+        </dd>
+      </dl>
+      <dl
+        className="seller-detail"
+      >
+        <dt
+          className="seller-detail-label"
+        >
+          Listed ads
+        </dt>
+        <dd
+          className="seller-detail-value"
+        >
+          
+        </dd>
+      </dl>
     </div>
     <div
       className="seller-details-container"
@@ -107,50 +153,6 @@ exports[`renders "empty ad" correctly 1`] = `
       <div
         className="seller-details-content"
       >
-        <dl
-          className="seller-detail"
-        >
-          <dt
-            className="seller-detail-label"
-          >
-            Location
-          </dt>
-          <dd
-            className="seller-detail-value"
-          >
-            <address>
-              ---
-            </address>
-          </dd>
-        </dl>
-        <dl
-          className="seller-detail"
-        >
-          <dt
-            className="seller-detail-label"
-          >
-            DoneDealing since
-          </dt>
-          <dd
-            className="seller-detail-value"
-          >
-            2018
-          </dd>
-        </dl>
-        <dl
-          className="seller-detail"
-        >
-          <dt
-            className="seller-detail-label"
-          >
-            Listed ads
-          </dt>
-          <dd
-            className="seller-detail-value"
-          >
-            
-          </dd>
-        </dl>
         <div
           className="seller-verification-status"
         >
