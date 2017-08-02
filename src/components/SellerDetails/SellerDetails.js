@@ -1,6 +1,21 @@
 import React, {Component} from 'react';
 import ShowPhoneNumber from '../ShowPhoneNumber';
 
+
+const MessageSellerButton = () => (
+  <div className="contact-seller-method contact-seller-by-message disabled">
+    <div className="contact-seller-method-content">
+      <button
+        className="btn contact-seller-message-submit-btn"
+        id="contact-seller-send-btn-main"
+        disabled="disabled"
+      >
+        Seller can't be messaged
+      </button>
+    </div>
+  </div>
+);
+
 const SellerContactDetails = ({ name, id, sellerIsPhoneable }) => (
   <div className="contact-seller-container">
     <div className="contact-seller-header">
@@ -11,17 +26,7 @@ const SellerContactDetails = ({ name, id, sellerIsPhoneable }) => (
       </div>
     </div>
 
-    <div className="contact-seller-method contact-seller-by-message disabled">
-      <div className="contact-seller-method-content">
-        <button
-          className="btn contact-seller-message-submit-btn"
-          id="contact-seller-send-btn-main"
-          disabled="disabled">
-          Seller can't be messaged
-        </button>
-      </div>
-    </div>
-
+    <MessageSellerButton />
     <ShowPhoneNumber
       id={id}
       sellerIsPhoneable={sellerIsPhoneable}
@@ -40,17 +45,18 @@ const SellerProperties = ({ sellerProperties }) => (
   </div>
 );
 
+const VerificationIcon = ({ children, type }) => (
+  <span className={`verification-credential ${type}`}>
+    <span className="verified"><i className="icon icon-tick_green"></i>{ children }</span>
+  </span>
+);
+
 const SellerVerifications = () => (
   <div className="seller-details-container">
     <div className="seller-details-content">
       <div className="seller-verification-status">
-        <span className="verification-credential email">
-          <span className="verified"><i className="icon icon-tick_green"></i>Email Verified</span>
-        </span>
-
-        <span className="verification-credential phone">
-          <span className="verified"><i className="icon icon-tick_green"></i>Phone Verified</span>
-        </span>
+        <VerificationIcon type={'email'}>Email Verified</VerificationIcon>
+        <VerificationIcon type={'phone'}>Phone Verified</VerificationIcon>
       </div>
     </div>
   </div>
