@@ -3,18 +3,17 @@ import React, { Component } from 'react';
 class MediaPreview extends Component {
 
   render() {
-
+    const { photo, header, mediaCount } = this.props;
     const ad = this.props.ad;
-    const adPhoto = (ad.photos && ad.photos.length > 0 ? ad.photos[0].small2 : null);
 
     return (
       <div className="card__media">
         <div className="card__photo">
-          <img alt={ad.header} src={adPhoto}/>
+          <img alt={header} src={photo}/>
         </div>
         <div className="card__media-count">
           <i className="icon-camera"></i>
-          1/{ad.mediaCount}
+          1/{ mediaCount }
         </div>
       </div>
     );

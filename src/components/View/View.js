@@ -22,6 +22,7 @@ class View extends React.Component {
 
   render() {
     const { ad } = this.state;
+    const photo = (ad.photos && ad.photos.length > 0 ? ad.photos[0].small2 : null);
     return (
       <div className="App">
         <h1>Ad Details</h1>
@@ -30,10 +31,10 @@ class View extends React.Component {
           {ad.description}
         </description>
         <div>
-          <PriceTag ad={ad} />
+          <PriceTag price={ad.price} currency={ad.currency} isWantedAd={ad.wanted} />
           {ad.county}
         </div>
-        <MediaPreview ad={ad} />
+        <MediaPreview photo={photo} mediaCount={ad.mediaCount} header={ad.header} />
         <SellerDetails ad={ad} />
       </div>
     )

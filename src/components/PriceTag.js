@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
 
+const Price = ({ currencySign, price }) => (
+  <span>
+    <span>{ currencySign }</span>
+    { price }
+  </span>
+);
+
 class PriceTag extends Component {
 
+  getCurrencySign() {
+    const { ad, price, currency } = this.props;
+    return !!price ? (currency === 'GBP' ? '£' : '€') : 'No Price';
+  }
+
   render() {
-    const injectHTML = (markup) =>{
-      return {__html: markup};
-    };
-
-    const ad = this.props.ad;
-    const isWantedAd = ad.wanted === true;
-
-    let price;
-    let currencySymbolMarkup;
-    currencySymbolMarkup = (typeof ad.price !== 'undefined' && ad.price !== '') ? (ad.currency === 'GBP' ? '&#163;' : '&#128;') : 'No Price';
-    if (isWantedAd){
-      price = <span>WANTED</span>
-    } else{
-      price = <span>
-          <span dangerouslySetInnerHTML={injectHTML(currencySymbolMarkup)}></span>
-        {(typeof ad.price !== 'undefined' && ad.price !== '') ? ad.price : ''}
-      </span>;
-    }
-
+    const { price, isWantedAd } = this.props;
     return (
-      <p className={'card__price' + (isWantedAd ? ' card__price--wanted' : '')}>{price}</p>
+      <p className={'card__price' + (isWantedAd ? ' card__price--wanted' : '')}>
+        { isWantedAd ? 
+          <span>WANTED</span> :
+          <Price currencySign={this.getCurrencySign()} price={price} /> }
+      </p>
     );
   }
 }

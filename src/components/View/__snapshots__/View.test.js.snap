@@ -16,14 +16,9 @@ exports[`renders "empty ad" correctly 1`] = `
       className="card__price"
     >
       <span>
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "No Price",
-            }
-          }
-        />
-        
+        <span>
+          No Price
+        </span>
       </span>
     </p>
   </div>

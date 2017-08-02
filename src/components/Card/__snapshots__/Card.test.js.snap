@@ -62,13 +62,9 @@ exports[`renders inital loading state correctly 1`] = `
             className="card__price"
           >
             <span>
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "&#128;",
-                  }
-                }
-              />
+              <span>
+                €
+              </span>
               2,600
             </span>
           </p>
