@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { getSellersPhoneNumber } from '../api/ads';
-
+import { getSellersPhoneNumber } from '../../api/ads';
 
 const PhoneButton = ({ onButtonClick, isPhoneable }) => (
   <button 
