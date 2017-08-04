@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<header
+  className="header-container"
+>
+  <div
+    className="header-content"
+  >
+    <div
+      className="menu-bar-container"
+    >
+      <div
+        className="menu-bar-content page-row"
+      >
+        <a
+          className="header-logo"
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt="DoneDeal"
+            className="header-logo-image"
+            src="donedeal-logo.svg"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+`;

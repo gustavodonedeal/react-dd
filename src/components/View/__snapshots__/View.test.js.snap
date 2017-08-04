@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "empty ad" correctly 1`] = `
+<div
+  className="App"
+>
+  <h1>
+    Ad Details
+  </h1>
+  <h2 />
+  <description
+    className="desc"
+  />
+  <div>
+    <p
+      className="card__price"
+    >
+      <span>
+        <span>
+          No Price
+        </span>
+      </span>
+    </p>
+  </div>
+  <div
+    className="card__media"
+  >
+    <div
+      className="card__photo"
+    >
+      <img
+        alt={undefined}
+        src={null}
+      />
+    </div>
+    <div
+      className="card__media-count"
+    >
+      <i
+        className="icon-camera"
+      />
+      1/
+    </div>
+  </div>
+  <div
+    className="seller-interaction-container"
+  >
+    <div
+      className="contact-seller-container"
+    >
+      <div
+        className="contact-seller-header"
+      >
+        <span
+          className="contact-seller-image icon-user_tick"
+        />
+        <div
+          className="contact-seller-title"
+        >
+          <span
+            className="contact-seller-name"
+          >
+            
+          </span>
+        </div>
+      </div>
+      <div
+        className="contact-seller-method contact-seller-by-message disabled"
+      >
+        <div
+          className="contact-seller-method-content"
+        >
+          <button
+            className="btn contact-seller-message-submit-btn"
+            disabled="disabled"
+            id="contact-seller-send-btn-main"
+          >
+            Seller can't be messaged
+          </button>
+        </div>
+      </div>
+      <div
+        className="contact-seller-method contact-seller-by-phone"
+      >
+        <div
+          className="btn contact-seller-by-phone-btn input-btn"
+        >
+          <button
+            className="show-number"
+            id="show-number-btn"
+            onClick={[Function]}
+            title="Click to show phone number"
+          >
+            Show phone number
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <dl
+        className="seller-detail"
+      >
+        <dt
+          className="seller-detail-label"
+        >
+          Location
+        </dt>
+        <dd
+          className="seller-detail-value"
+        >
+          <address>
+            ---
+          </address>
+        </dd>
+      </dl>
+      <dl
+        className="seller-detail"
+      >
+        <dt
+          className="seller-detail-label"
+        >
+          DoneDealing since
+        </dt>
+        <dd
+          className="seller-detail-value"
+        >
+          2018
+        </dd>
+      </dl>
+      <dl
+        className="seller-detail"
+      >
+        <dt
+          className="seller-detail-label"
+        >
+          Listed ads
+        </dt>
+        <dd
+          className="seller-detail-value"
+        >
+          
+        </dd>
+      </dl>
+    </div>
+    <div
+      className="seller-details-container"
+    >
+      <div
+        className="seller-details-content"
+      >
+        <div
+          className="seller-verification-status"
+        >
+          <span
+            className="verification-credential email"
+          >
+            <span
+              className="verified"
+            >
+              <i
+                className="icon icon-tick_green"
+              />
+              Email Verified
+            </span>
+          </span>
+          <span
+            className="verification-credential phone"
+          >
+            <span
+              className="verified"
+            >
+              <i
+                className="icon icon-tick_green"
+              />
+              Phone Verified
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
