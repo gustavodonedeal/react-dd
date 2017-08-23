@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`renders "No Results found" correctly 1`] = `
-<p>
-  Loading...
-</p>
-`;
