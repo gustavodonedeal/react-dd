@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { increment, decrement } from './counter';
 
 class TestPage extends Component {
-    constructor() {
-        super();
-        this.state = {
-            number: 0
-        };
-    }
-
-    increment = () => this.setState(prevState => ({ number: prevState.number + 1 }));
-    decrement = () => this.setState(prevState => ({ number: prevState.number - 1 }));
-
     render() {
-        const { number } = this.state;
+        const { value, onIncrement, onDecrement } = this.props;
         return (
             <div>
-                { number } gon naje change
-                <button onClick={this.increment}>+</button>
-                <button onClick={this.decrement}>-</button>
+                { value }
+                <button onClick={onIncrement}>+</button>
+                <button onClick={onDecrement}>-</button>
             </div>
         );
     }
 }
 
-export default TestPage;
+const mapStateToProps = state => ({
+    value: state.counter
+});
+
+const mapDispatchToProps = dispatch => ({
+    onIncrement: () => dispatch(increment()),
+    onDecrement: () => dispatch(decrement())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TestPage);
