@@ -4,9 +4,8 @@ import { StaticRouter } from 'react-router';
 import flushChunks from 'webpack-flush-chunks';
 import { flushChunkNames } from 'react-universal-component/server';
 import { Provider } from 'react-redux';
+import { configureStore } from '../src/store';
 import App from '../src/components/App';
-import rootReducer from '../src/reducer';
-import { createStore } from 'redux';
 
 export default ({ clientStats }) => async (req, res, next) => {
   const app = getApp(req.url);
@@ -15,7 +14,7 @@ export default ({ clientStats }) => async (req, res, next) => {
 };
 
 const getApp = (url) => {
-  const store = createStore(rootReducer);
+  const store = configureStore();
   const context = {};
   const html = ReactDOM.renderToString(
     <Provider store={store}>    
