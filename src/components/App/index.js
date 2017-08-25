@@ -4,9 +4,6 @@ import routes from "./routes";
 
 const App = () =>
   <div>
-    <nav>
-      <Link to="/test">Hello</Link>
-    </nav>
     <Switch>
       {routes.map(route => <Route key={route.path} {...route} />)}
     </Switch>

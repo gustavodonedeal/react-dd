@@ -1,9 +1,6 @@
 import React from "react";
 import universal from "react-universal-component";
-import {
-  fetchAdvert,
-  initialState as initialAdvertState
-} from "../Advert/reducer";
+import { fetchAdvert } from "../Advert/reducer";
 
 const UniversalRoute = universal(({ component }) => import(`../${component}`));
 const AdvertPage = props => <UniversalRoute component={"Advert"} {...props} />;

@@ -3,13 +3,9 @@ import { connect } from "react-redux";
 import { fetchAdvert } from "./reducer";
 
 class Advert extends Component {
-  static getData(id) {
-    return fetchAdvert(id);
-  }
-
-  async componentWillMount() {
-    const { match, fetchAdvert } = this.props;
-    await fetchAdvert(match.params.adId);
+  async componentDidMount() {
+    const { match, fetchAdvert, advert } = this.props;
+    if (!advert) await fetchAdvert(match.params.adId);
   }
 
   render() {
@@ -23,7 +19,7 @@ class Advert extends Component {
 }
 
 const mapStateToProps = state => ({
-  advert: state
+  advert: state.activeAdvert.advert
 });
 
 export { fetchAdvert };
