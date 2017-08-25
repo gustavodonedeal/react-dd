@@ -16,17 +16,20 @@ export const requestAdvertFailure = error => ({
   error
 });
 
-export const fetchAdvert = id => async dispatch => {
-  dispatch(requestAdvert(id));
-  try {
-    const advert = await getAd(id);
-    dispatch(requestAdvertSuccess(advert));
-  } catch (error) {
-    dispatch(requestAdvertFailure(error));
-  }
-};
+export const fetchAdvert = id => dispatch =>
+  new Promise(async (resolve, reject) => {
+    dispatch(requestAdvert(id));
+    try {
+      const advert = await getAd(id);
+      resolve(dispatch(requestAdvertSuccess(advert)));
+    } catch (error) {
+      reject(dispatch(requestAdvertFailure(error)));
+    }
+  });
 
-export default function reducer(state = { loading: false, advert: {}, error: null }, action) {
+export const initialState = { loading: false, advert: {}, error: null };
+
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_ADVERT_REQUEST:
       return Object.assign({}, state, { loading: true, error: null });

@@ -6,7 +6,9 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "dotenv": "^4.0.0",
+    "es6-promise": "^4.1.1",
     "express": "^4.15.4",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
@@ -26,6 +28,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "extract-css-chunks-webpack-plugin": "^2.0.16",
+    "node-noop": "^1.0.0",
     "prettier": "^1.5.3",
     "rimraf": "^2.6.1",
     "webpack": "^3.5.5",
@@ -36,7 +39,7 @@
   },
   "scripts": {
     "start": "yarn clean && yarn start:server:dev",
-    "start:server:dev": "NODE_ENV=development node server/index.js",
+    "start:server:dev": "NODE_ENV=development node --inspect server/index.js",
     "clean": "rimraf dist"
   }
 }
