@@ -40,6 +40,7 @@
   "scripts": {
     "start": "yarn clean && yarn start:server:dev",
     "start:server:dev": "NODE_ENV=development node --inspect server/index.js",
+    "format": "prettier --write '{,!(node_modules)/**/}*.js'",
     "clean": "rimraf dist"
   }
 }
