@@ -1,5 +1,5 @@
 import React from 'react';
-// import styles from './Card.css';
+import styles from './Card.css';
 
 const SearchInput = () => <input type="text" />;
 
@@ -14,7 +14,7 @@ const SearchBar = () =>
   </div>;
 
 const SearchResult = () =>
-  <div className={''}>
+  <div className={styles.card}>
     <img />
     <h3>Vroom</h3>
     <span>16 days | Tipp</span>

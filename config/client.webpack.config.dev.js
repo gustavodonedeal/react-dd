@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 
 module.exports = {
   name: 'client',
@@ -31,10 +32,23 @@ module.exports = {
             options: {}
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: ExtractCssChunks.extract({
+          use: {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]'
+            }
+          }
+        })
       }
     ]
   },
   plugins: [
+    new ExtractCssChunks(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'],
