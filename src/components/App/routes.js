@@ -1,15 +1,20 @@
-import React from "react";
-import universal from "react-universal-component";
-import { fetchAdvert } from "../Advert/reducer";
+import React from 'react';
+import universal from 'react-universal-component';
+import { fetchAdvert } from '../Advert/reducer';
 
 const UniversalRoute = universal(({ component }) => import(`../${component}`));
-const AdvertPage = props => <UniversalRoute component={"Advert"} {...props} />;
+const AdvertPage = props => <UniversalRoute component={'Advert'} {...props} />;
+const SearchPage = props => <UniversalRoute component={'Search'} {...props} />;
 
 const routes = [
   {
-    path: "/ad/:adId",
+    path: '/ad/:adId',
     component: AdvertPage,
     loadData: ({ params }) => fetchAdvert(params.adId)
+  },
+  {
+    path: '/',
+    component: SearchPage
   }
 ];
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import Logo from './Logo.svg';
+import logo from './Logo.svg';
 
-const Header = () => <div>hello world</div>;
+const Header = () => <img src={logo} />;
 
 export default Header;
