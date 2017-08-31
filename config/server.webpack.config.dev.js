@@ -9,8 +9,9 @@ module.exports = {
   entry: [path.resolve(__dirname, '../server/render.js')],
   output: {
     filename: '[name].js',
+    chunkFilename: '[name].js',
     path: path.resolve(__dirname, '../dist/server'),
-    publicPath: '/static/',
+    publicPath: '/public/',
     libraryTarget: 'commonjs2'
   },
   module: {

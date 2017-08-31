@@ -1,19 +1,20 @@
 import 'isomorphic-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import {StaticRouter} from 'react-router';
+import { StaticRouter } from 'react-router';
 import flushChunks from 'webpack-flush-chunks';
-import {flushChunkNames} from 'react-universal-component/server';
-import {Provider} from 'react-redux';
-import {configureStore} from '../src/store';
-import {matchPath} from 'react-router-dom';
+import { flushChunkNames } from 'react-universal-component/server';
+import { Provider } from 'react-redux';
+import { configureStore } from '../src/store';
+import { matchPath } from 'react-router-dom';
 import App from '../src/components/App';
 import routes from '../src/components/App/routes';
 
-export default({clientStats}) => async(req, res, next) => {
+export default ({ clientStats }) => async (req, res, next) => {
   const store = await getStore(req);
   const app = getApp(req.url, store);
-  const chunks = flushChunks(clientStats, {chunkNames: flushChunkNames()});
+  const chunkNames = flushChunkNames();
+  const chunks = flushChunks(clientStats, { chunkNames });
   res.send(getHTMLString(app, chunks));
 };
 
@@ -28,7 +29,7 @@ const getApp = (url, store) => {
   const html = ReactDOM.renderToString(
     <Provider store={store}>
       <StaticRouter location={url} context={context}>
-        <App/>
+        <App />
       </StaticRouter>
     </Provider>
   );
@@ -38,7 +39,7 @@ const getApp = (url, store) => {
   };
 };
 
-const getData = async(req, store) => {
+const getData = async (req, store) => {
   const promises = [];
   routes.some(route => {
     const match = matchPath(req.url, route);
@@ -50,10 +51,7 @@ const getData = async(req, store) => {
   return await Promise.all(promises);
 };
 
-const getHTMLString = ({
-  html,
-  preloadedState
-}, {styles, cssHash, js}) => {
+const getHTMLString = ({ html, preloadedState }, { styles, cssHash, js }) => {
   return `
     <!doctype html>
     <html>
@@ -71,6 +69,8 @@ const getHTMLString = ({
   `;
 };
 
-const initialStateString = preloadedState => `<script>window.__PRELOADED_STATE__ = ${JSON
-  .stringify(preloadedState)
-  .replace(/</g, '\\u003c')};</script>`;
+const initialStateString = preloadedState => `<script>
+window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
+  /</g,
+  '\\u003c'
+)};</script>`;

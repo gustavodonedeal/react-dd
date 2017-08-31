@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchAdvert } from "./reducer";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchAdvert } from './reducer';
+import styles from './Advert.css';
 
 class Advert extends Component {
   async componentDidMount() {
@@ -10,7 +11,7 @@ class Advert extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.advertContainer}>
         <h1>Big car</h1>
         {JSON.stringify(this.props.advert)}
       </div>
