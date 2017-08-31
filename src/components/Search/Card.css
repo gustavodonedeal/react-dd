@@ -1,3 +1,29 @@
-:local .card {
-  background: red;
+:local .cardContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-template-areas: 
+    "image header header" 
+    "image info info"
+    "image price price";
+}
+
+:local .cardImage {
+  grid-area: image;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:local .cardHeader {
+  grid-area: header;
+}
+
+:local .cardInfo {
+  grid-area: info;
+}
+
+:local .price {
+  grid-area: price;
 }

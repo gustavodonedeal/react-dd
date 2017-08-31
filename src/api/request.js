@@ -1,15 +1,15 @@
 const baseRequestParams = () => ({
-  mode: "cors",
+  mode: 'cors',
   headers: new Headers({
-    "Content-Type": "application/json",
-    Origin: "http://localhost:4002"
+    'Content-Type': 'application/json',
+    Origin: 'http://localhost:4002'
   })
 });
 
 const postRequestParams = (jsonParams = {}) =>
   Object.assign(
     {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(jsonParams)
     },
     baseRequestParams()
@@ -18,7 +18,7 @@ const postRequestParams = (jsonParams = {}) =>
 const getRequestParams = () =>
   Object.assign(
     {
-      method: "GET"
+      method: 'GET'
     },
     baseRequestParams()
   );

@@ -1,7 +1,7 @@
 import { CORS, DONE_DEAL_API_BASE_V3, DONE_DEAL_API_BASE_V4 } from './consts';
 import { getRequestParams, postRequestParams } from './request';
 
-const searchParams = (section, filter = {}) =>
+const searchParams = (section, filter = '') =>
   Object.assign(
     {},
     {
@@ -10,7 +10,7 @@ const searchParams = (section, filter = {}) =>
       section,
       sort: 'relevance desc'
     },
-    filter
+    { words: filter }
   );
 
 const getAds = async (section = 'cars', filter = {}) => {
@@ -24,6 +24,7 @@ const getAds = async (section = 'cars', filter = {}) => {
     return data;
   } catch (error) {
     console.error(error);
+    return [];
   }
 };
 

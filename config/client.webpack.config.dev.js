@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 
 module.exports = {
@@ -36,18 +37,21 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractCssChunks.extract({
-          use: {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]'
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
             }
-          }
+          ]
         })
       }
     ]
   },
   plugins: [
+    new WriteFilePlugin(),
     new ExtractCssChunks(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({

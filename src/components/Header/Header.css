@@ -1,0 +1,9 @@
+:local .logoContainer {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+:local .logo {
+  width: 50vw;
+}

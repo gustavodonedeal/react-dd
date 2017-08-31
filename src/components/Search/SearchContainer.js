@@ -1,9 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import Search from './Search';
+import {selectors, fetchSearchResults} from './reducer';
 
 const mapStateToProps = state => ({
-  results: [1, 2, 3]
+  results: selectors.getSearchAds(state.search)
 });
 
-export default connect(mapStateToProps)(Search);
+const mapDispatchToProps = dispatch => ({
+  onFilter: event => dispatch(fetchSearchResults(event.target.value))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

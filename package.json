@@ -17,6 +17,7 @@
     "react-universal-component": "^2.5.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "sanitize.css": "^5.0.0",
     "webpack-flush-chunks": "^1.1.23"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "node-noop": "^1.0.0",
     "prettier": "^1.5.3",
     "rimraf": "^2.6.1",
+    "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.18.2",
@@ -42,7 +44,7 @@
   "scripts": {
     "start": "yarn clean && yarn start:server:dev",
     "start:server:dev": "NODE_ENV=development node --inspect server/index.js",
-    "format": "prettier --write '{,!(node_modules)/**/}*.js'",
+    "format": "find ./server/**/*.js | xargs prettier --write --print-width 80 --single-quote",
     "clean": "rimraf dist"
   }
 }
