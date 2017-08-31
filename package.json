@@ -29,10 +29,15 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.5",
+    "eslint": "^4.5.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.2.0",
     "extract-css-chunks-webpack-plugin": "^2.0.16",
     "file-loader": "^0.11.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.4",
     "node-noop": "^1.0.0",
-    "prettier": "^1.5.3",
+    "prettier": "^1.6.1",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
@@ -44,7 +49,13 @@
   "scripts": {
     "start": "yarn clean && yarn start:server:dev",
     "start:server:dev": "NODE_ENV=development node --inspect server/index.js",
-    "format": "find ./server/**/*.js | xargs prettier --write --print-width 80 --single-quote",
+    "precommit": "lint-staged",
     "clean": "rimraf dist"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --print-width 80 --single-quote",
+      "git add"
+    ]
   }
 }
