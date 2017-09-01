@@ -1,67 +1,52 @@
 import React from 'react';
-import cardStyles from './Card.css';
+import { compose, branch, renderComponent } from 'recompose';
+import Card from './Card';
 import searchStyles from './Search.css';
-import { Link } from 'react-router-dom';
 
-const SearchInput = ({ onFilter }) => <input onChange={onFilter} type="text" />;
+const SearchInput = ({ onFilter, filterValue }) => (
+  <input onChange={onFilter} value={filterValue} type="text" />
+);
 
 const SearchButton = () => (
   <button className={searchStyles.searchButton}>Search</button>
 );
 
-const SearchBar = ({ onFilter }) => (
+const SearchBar = ({ onFilter, filterValue }) => (
   <div>
     <h2>Filters</h2>
     <div className={searchStyles.searchBar}>
       <label className={searchStyles.searchLabel}>Search</label>
-      <SearchInput onFilter={onFilter} />
+      <SearchInput onFilter={onFilter} filterValue={filterValue} />
       <SearchButton />
     </div>
   </div>
 );
 
-const CurrencySign = ({ currency }) => {
-  switch (currency) {
-    case 'EUR':
-    default:
-      return <span>€</span>;
-  }
-};
+const Loading = () => <h2>Loading...</h2>;
+const NoResults = () => <h2>No results found. 😾</h2>;
+const isLoading = ({ loading }) => loading;
+const hasNoResults = ({ results }) => results.length === 0;
 
-const Price = ({ currency, children }) => (
-  <div>
-    <CurrencySign currency={currency} /> {children}
+const withLoadingIndicator = branch(isLoading, renderComponent(Loading));
+const withNoResultsFound = branch(hasNoResults, renderComponent(NoResults));
+
+const ResultsList = withNoResultsFound(({ results }) => (
+  <div className={searchStyles.cardList}>
+    {results.map(result => <Card {...result} key={result.id} />)}
   </div>
-);
+));
 
-const SearchResult = ({ header, age, county, price, currency, photos, id }) => (
-  <Link to={`/ad/${id}`} className={cardStyles.cardContainer}>
-    <img src={photos ? photos[0].large : ''} className={cardStyles.cardImage} />
-    <h3 className={cardStyles.cardHeader}>{header}</h3>
-    <div className={cardStyles.cardInfo}>{`${age} | ${county}`}</div>
-    <h4 className={cardStyles.price}>
-      <Price currency={currency}>{price}</Price>
-    </h4>
-  </Link>
-);
-
-const SearchResults = ({ results }) => (
+const SearchResults = withLoadingIndicator(({ results }) => (
   <div>
     <h2>Cars</h2>
-    <div className={searchStyles.cardList}>
-      {results.length > 0 ? (
-        results.map(result => <SearchResult {...result} key={result.id} />)
-      ) : (
-        <h2>No results found. 🙈</h2>
-      )}
-    </div>
+    <ResultsList results={results} />
   </div>
-);
+));
 
-const Search = ({ results, onFilter }) => (
+const Search = ({ results, onFilter, filter, loading }) => (
   <div>
-    <SearchBar onFilter={onFilter} />
-    <SearchResults results={results} />
+    <SearchBar onFilter={onFilter} filterValue={filter} />
+    <SearchResults results={results} loading={loading} />
   </div>
 );
 
