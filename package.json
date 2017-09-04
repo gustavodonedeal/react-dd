@@ -36,6 +36,8 @@
     "extract-css-chunks-webpack-plugin": "^2.0.17",
     "file-loader": "^0.11.2",
     "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^20.0.4",
     "lint-staged": "^4.0.4",
     "node-noop": "^1.0.0",
     "prettier": "^1.6.1",
@@ -51,12 +53,22 @@
     "start": "yarn cleanfiles && yarn start:server:dev",
     "start:server:dev": "NODE_ENV=development node --inspect server/index.js",
     "precommit": "lint-staged",
-    "cleanfiles": "rimraf dist"
+    "cleanfiles": "rimraf dist",
+    "test": "jest --coverage"
   },
   "lint-staged": {
     "*.js": [
       "prettier --write --print-width 80 --single-quote",
       "git add"
     ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    }
   }
 }
