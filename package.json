@@ -14,6 +14,7 @@
     "react-redux": "^5.0.6",
     "react-router": "^4.1.2",
     "react-router-dom": "^4.1.2",
+    "react-test-renderer": "^15.6.1",
     "react-universal-component": "^2.5.2",
     "recompose": "^0.25.0",
     "redux": "^3.7.2",
@@ -30,6 +31,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.5",
+    "enzyme": "^2.9.1",
     "eslint": "^4.5.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.2.0",
@@ -54,7 +56,8 @@
     "start:server:dev": "NODE_ENV=development node --inspect server/index.js",
     "precommit": "lint-staged",
     "cleanfiles": "rimraf dist",
-    "test": "jest --coverage"
+    "coverage:report": "jest --coverage",
+    "test:watch": "jest --watch --coverage"
   },
   "lint-staged": {
     "*.js": [
@@ -64,10 +67,16 @@
   },
   "jest": {
     "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/*.snap"
+    ],
     "collectCoverageFrom": [
-      "src/**"
+      "src/**",
+      "server/**"
     ],
     "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.css$": "identity-obj-proxy"
     }
   }
