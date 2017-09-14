@@ -1,24 +1,45 @@
-const path = require("path");
-const webpack = require("webpack");
-const WriteFilePlugin = require("write-file-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
-  name: "server",
-  target: "node",
-  devtool: "eval-source-map",
-  entry: [path.resolve(__dirname, "../server/render.js")],
+  name: 'server',
+  target: 'node',
+  devtool: 'eval-source-map',
+  entry: [path.resolve(__dirname, '../server/render.js')],
   output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "../dist/server"),
-    publicPath: "/static/",
-    libraryTarget: "commonjs2"
+    filename: '[name].js',
+    chunkFilename: '[name].js',
+    path: path.resolve(__dirname, '../dist/server'),
+    publicPath: '/public/',
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: 'babel-loader'
+      },
+      {
+        test: /\.(svg|png|jpg|gif)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'css-loader/locals',
+          options: {
+            modules: true,
+            localIdentName: '[name]__[local]--[hash:base64:5]'
+          }
+        }
       }
     ]
   },
@@ -27,10 +48,10 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),
-    new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, "node-noop"),
+    new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("development")
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
       }
     })
   ]

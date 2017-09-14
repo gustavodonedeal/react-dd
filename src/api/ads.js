@@ -1,19 +1,19 @@
-import { CORS, DONE_DEAL_API_BASE_V3, DONE_DEAL_API_BASE_V4 } from "./consts";
-import { getRequestParams, postRequestParams } from "./request";
+import { CORS, DONE_DEAL_API_BASE_V3, DONE_DEAL_API_BASE_V4 } from './consts';
+import { getRequestParams, postRequestParams } from './request';
 
-const searchParams = (section, filter = {}) =>
+const searchParams = (section, filter = '') =>
   Object.assign(
     {},
     {
-      adType: "forsale",
+      adType: 'forsale',
       max: 30,
       section,
-      sort: "relevance desc"
+      sort: 'relevance desc'
     },
-    filter
+    { words: filter }
   );
 
-const getAds = async (section, filter) => {
+const getAds = async (section = 'cars', filter = {}) => {
   const params = searchParams(section, filter);
   try {
     const response = await fetch(
@@ -21,10 +21,11 @@ const getAds = async (section, filter) => {
       postRequestParams(params)
     );
     const data = await response.json();
+    return data;
   } catch (error) {
     console.error(error);
+    return [];
   }
-  return data ? data.ads : [];
 };
 
 const getAd = async adId => {

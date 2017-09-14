@@ -1,0 +1,19 @@
+:local .cardList {
+    display: grid;
+    grid-gap: 5px;
+    margin: 5px;
+}
+
+:local .searchBar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+:local .searchButton {
+    justify-self: center;
+    width: 50%;
+}
+
+:local .searchLabel {
+    justify-self: center;
+}

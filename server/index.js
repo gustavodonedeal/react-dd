@@ -13,17 +13,21 @@ const initDevelopmentServer = () => {
   return new Promise((resolve, reject) => {
     const app = express();
     const multiCompiler = webpack([webpackConfig.client, webpackConfig.server]);
-    const [ clientCompiler ] = multiCompiler.compilers;
+    const [clientCompiler] = multiCompiler.compilers;
     app.use(webpackDevMiddleware(multiCompiler, { publicPath }));
     app.use(webpackHotMiddleware(clientCompiler));
-    app.use(webpackHotServerMiddleware(multiCompiler, { serverRendererOptions: { outputPath }}));
+    app.use(
+      webpackHotServerMiddleware(multiCompiler, {
+        serverRendererOptions: { outputPath }
+      })
+    );
     multiCompiler.plugin('done', () => resolve(app));
   });
 };
 
 const startServer = async () => {
   const app = await initDevelopmentServer();
-  app.listen(4002, () => console.log(`✌️ Application listening on port 4002.`));  
+  app.listen(4002, () => console.log(`✌️ Application listening on port 4002.`));
 };
 
 startServer();
